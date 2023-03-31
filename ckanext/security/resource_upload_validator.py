@@ -124,7 +124,7 @@ blacklist: %s',
 
 def validate_upload_presence(resource):
     linked_or_uploaded = bool(resource.get('url')) or _has_upload(resource)
-    if not linked_or_uploaded:
-        raise ValidationError(
-            {'File': ['Please upload a file or link to an external resource']}
-        )
+    #if not linked_or_uploaded:
+    #    raise ValidationError(
+    #        {'File': ['Please upload a file or link to an external resource']}
+    #    )
