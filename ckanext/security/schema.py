@@ -2,11 +2,11 @@
 
 import six
 
-from ckan.lib.navl.validators import ignore_missing, not_empty, ignore
+from ckan.lib.navl.validators import ignore_missing, not_empty, ignore, unicode_safe
 from ckan.logic.validators import (
     name_validator, user_name_validator, user_password_not_empty,
     user_passwords_match, ignore_not_sysadmin, user_about_validator,
-    user_both_passwords_entered
+    user_both_passwords_entered, boolean_validator, json_object
 )
 from ckanext.security import validators
 
@@ -34,8 +34,12 @@ def default_user_schema():
         'sysadmin': [ignore_missing, ignore_not_sysadmin],
         'apikey': [ignore],
         'reset_key': [ignore],
-        'activity_streams_email_notifications': [ignore_missing],
+        'activity_streams_email_notifications': [ignore_missing,
+                                                    boolean_validator],
         'state': [ignore_missing],
+        'image_url': [ignore_missing, unicode_safe],
+        'image_display_url': [ignore_missing, unicode_safe],
+        'plugin_extras': [ignore_missing, json_object, ignore_not_sysadmin],
     }
     return schema
 
