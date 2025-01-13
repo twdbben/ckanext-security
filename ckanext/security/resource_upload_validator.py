@@ -140,4 +140,4 @@ def validate_upload(resource):
         validate_upload_presence(resource)
     except tk.ValidationError:
         return
-    validate_upload_type(resource)
+    #validate_upload_type(resource)
